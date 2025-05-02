@@ -1,23 +1,28 @@
 #include "Core/Time/Time.h"
 
-namespace OPENGL_TEST {
+namespace TRUFFLE
+{
     Time::Time(std::function<float()> getter)
         : timeGetter(std::move(getter)) {}
 
-    void Time::SetTimeGetter(std::function<float()> getter) {
+    void Time::SetTimeGetter(std::function<float()> getter)
+    {
         timeGetter = std::move(getter);
     }
 
-    void Time::Init() {
+    void Time::Init()
+    {
         lastFrame = lastSecond = timeGetter();
     }
 
-    void Time::Update() {
+    void Time::Update()
+    {
         frameCount++;
 
         float currentTime = timeGetter();
 
-        if (currentTime - lastSecond >= 1.0f) {
+        if (currentTime - lastSecond >= 1.0f)
+        {
             FPS = frameCount;
             frameCount = 0;
             lastSecond = currentTime;

@@ -2,7 +2,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace OPENGL_TEST
+namespace TRUFFLE
 {
   enum class KEYCODE
   {

@@ -6,8 +6,10 @@
 #include "Utils/Singleton.h"
 #include "Core/Time/Time.h"
 
-namespace OPENGL_TEST {
-	class Application : public Singleton<Application> {
+namespace TRUFFLE
+{
+	class Application : public Singleton<Application>
+	{
 	private:
 		bool isRunning = false;
 		bool isEditorEnable = true;
@@ -31,6 +33,6 @@ namespace OPENGL_TEST {
 		float GetDeltaTime() const { return m_time->GetDeltaTime(); }
 		float GetTotalTime() const { return m_time->GetTotalTime(); }
 		std::size_t GetFPS() const { return m_time->GetFPS(); }
-		Window* GetWindow() const { return m_window.get(); }
+		Window *GetWindow() const { return m_window.get(); }
 	};
 }

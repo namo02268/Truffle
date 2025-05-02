@@ -2,14 +2,13 @@
 
 #include "Core/GUI/GLFWTestWindow.h"
 
-namespace OPENGL_TEST
+namespace TRUFFLE
 {
 	Application::Application()
 	{
-		m_window = std::make_unique<Window>(1200, 800, "OpenGL_TEST");
-		m_time = std::make_unique<Time>([this]() {
-			return m_window->GetTime();
-		});
+		m_window = std::make_unique<Window>(1200, 800, "Truffle Engine");
+		m_time = std::make_unique<Time>([this]()
+																		{ return m_window->GetTime(); });
 	}
 
 	Application::~Application() {}
@@ -35,7 +34,6 @@ namespace OPENGL_TEST
 
 	void Application::Init()
 	{
-		
 	}
 
 	void Application::Update(float timeStep)

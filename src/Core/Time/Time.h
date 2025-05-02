@@ -3,8 +3,10 @@
 #include <cstddef>
 #include <functional>
 
-namespace OPENGL_TEST {
-    class Time {
+namespace TRUFFLE
+{
+    class Time
+    {
     private:
         std::function<float()> timeGetter;
 

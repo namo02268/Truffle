@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 # プロジェクト設定
-set (PROJECT_NAME OpenGL_TEST)
+set (PROJECT_NAME Truffle)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)

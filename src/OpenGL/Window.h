@@ -4,23 +4,25 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-namespace OPENGL_TEST {
-	class Window {
+namespace TRUFFLE
+{
+	class Window
+	{
 	private:
-		GLFWwindow* m_windowPtr = nullptr;
+		GLFWwindow *m_windowPtr = nullptr;
 		int m_width;
 		int m_height;
-		const char* m_title;
+		const char *m_title;
 
 	public:
-		Window(int width, int height, const char* title);
+		Window(int width, int height, const char *title);
 		~Window();
 
 		void BeginFrame();
 		void EndFrame();
 
 		bool IsOpen() { return !glfwWindowShouldClose(m_windowPtr); }
-		GLFWwindow* GetWindowPtr() { return m_windowPtr; }
+		GLFWwindow *GetWindowPtr() { return m_windowPtr; }
 		float GetTime() const { return (float)glfwGetTime(); }
 
 	private:
