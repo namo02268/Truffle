@@ -1,11 +1,14 @@
-#pragma once
-
+#include "Editor/AppInfo.h"
 #include "Core/Application/Application.h"
 #include "imgui/imgui.h"
 
 namespace TRUFFLE
 {
-  void ApplicationInfo()
+  void AppInfo::Init()
+  {
+  }
+
+  void AppInfo::Render()
   {
     auto &app = Application::GetInstance();
     ImGui::Begin("Application Info", nullptr);
@@ -28,4 +31,4 @@ namespace TRUFFLE
 
     ImGui::End();
   }
-}
+} // namespace TRUFFLE

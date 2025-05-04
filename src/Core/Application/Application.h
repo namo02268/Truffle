@@ -5,6 +5,7 @@
 #include "OpenGL/Window.h"
 #include "Utils/Singleton.h"
 #include "Core/Time/Time.h"
+#include "Editor/Editor.h"
 
 namespace TRUFFLE
 {
@@ -15,6 +16,7 @@ namespace TRUFFLE
 		bool isEditorEnable = true;
 		std::unique_ptr<Window> m_window;
 		std::unique_ptr<Time> m_time;
+		std::unique_ptr<Editor> m_editor;
 
 	protected:
 		Application();
@@ -27,6 +29,7 @@ namespace TRUFFLE
 		void Init();
 		void Update(float timeStep);
 		void Render();
+		void Shutdown();
 
 		bool IsRunning() const { return isRunning; }
 

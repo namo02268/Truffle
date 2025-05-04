@@ -28,8 +28,5 @@ namespace TRUFFLE
 	private:
 		void InitOpenGL();
 		void CleanUpOpenGL();
-
-		void InitImGUI();
-		void CleanUpImGUI();
 	};
 }

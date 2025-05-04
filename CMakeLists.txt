@@ -25,6 +25,10 @@ add_subdirectory(vendor/glfw)
 set(SRC_FILES
     "src/Core/Application/Application.cpp"
     "src/Core/Time/Time.cpp"
+    "src/Core/Logger/Logger.cpp"
+    "src/Editor/Editor.cpp"
+    "src/Editor/AppInfo.cpp"
+    "src/Editor/Console.cpp"
     "src/OpenGL/Window.cpp"
     "main.cpp"
 )
