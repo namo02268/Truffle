@@ -1,13 +1,12 @@
 #include "Core/Application/Application.h"
-
-#include "Editor/GLFWTestWindow.h"
 #include "Core/Logger/Logger.h"
 
 namespace TRUFFLE
 {
 	Application::Application()
 	{
-		m_window = std::make_unique<Window>(1200, 800, "Truffle Engine");
+		WindowProps props("Truffle Engine", 1200, 800);
+		m_window = std::make_unique<OpenGLWindow>(props);
 		m_time = std::make_unique<Time>([this]()
 																		{ return m_window->GetTime(); });
 		m_editor = std::make_unique<Editor>();
@@ -32,20 +31,19 @@ namespace TRUFFLE
 		while (isRunning && m_window->IsOpen())
 		{
 			m_time->Update();
-
-			m_window->BeginFrame();
 			{
 				Update(m_time->GetDeltaTime());
 				Render();
-				m_editor->Render();
+				if (isEditorEnable)
+					m_editor->Render();
 			}
-			m_window->EndFrame();
+			m_window->OnUpdate();
 		}
 	}
 
 	void Application::Init()
 	{
-		m_editor->Init(m_window->GetWindowPtr());
+		m_editor->Init(static_cast<GLFWwindow *>(m_window->GetNativeWindow()));
 		LOG_INFO("Application initialized.");
 	}
 

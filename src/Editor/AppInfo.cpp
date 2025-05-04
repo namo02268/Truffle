@@ -22,7 +22,7 @@ namespace TRUFFLE
 
     if (ImGui::TreeNode("OpenGL Info"))
     {
-      auto windowPtr = app.GetWindow()->GetWindowPtr();
+      auto windowPtr = static_cast<GLFWwindow *>(app.GetWindow()->GetNativeWindow());
       ImGui::Text("GLFW_FOCUSED : %d", glfwGetWindowAttrib(windowPtr, GLFW_FOCUSED));
       ImGui::Text("GLFW_CONTEXT_VERSION_MAJOR : %d", glfwGetWindowAttrib(windowPtr, GLFW_CONTEXT_VERSION_MAJOR));
       ImGui::Text("GLFW_CONTEXT_VERSION_MINOR : %d", glfwGetWindowAttrib(windowPtr, GLFW_CONTEXT_VERSION_MINOR));

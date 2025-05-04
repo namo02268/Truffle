@@ -29,7 +29,7 @@ set(SRC_FILES
     "src/Editor/Editor.cpp"
     "src/Editor/AppInfo.cpp"
     "src/Editor/Console.cpp"
-    "src/OpenGL/Window.cpp"
+    "src/OpenGL/OpenGLWindow.cpp"
     "main.cpp"
 )
 

@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <memory>
-#include "OpenGL/Window.h"
+#include "OpenGL/OpenGLWindow.h"
 #include "Utils/Singleton.h"
 #include "Core/Time/Time.h"
 #include "Editor/Editor.h"
@@ -14,7 +14,8 @@ namespace TRUFFLE
 	private:
 		bool isRunning = false;
 		bool isEditorEnable = true;
-		std::unique_ptr<Window> m_window;
+
+		std::unique_ptr<OpenGLWindow> m_window;
 		std::unique_ptr<Time> m_time;
 		std::unique_ptr<Editor> m_editor;
 
@@ -32,6 +33,7 @@ namespace TRUFFLE
 		void Shutdown();
 
 		bool IsRunning() const { return isRunning; }
+		bool IsEditorEnable() const { return isEditorEnable; }
 
 		float GetDeltaTime() const { return m_time->GetDeltaTime(); }
 		float GetTotalTime() const { return m_time->GetTotalTime(); }
