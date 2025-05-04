@@ -9,6 +9,7 @@ namespace TRUFFLE
 		m_window = std::make_unique<OpenGLWindow>(props);
 		m_time = std::make_unique<Time>([this]()
 																		{ return m_window->GetTime(); });
+		m_renderer = std::make_unique<Renderer>();
 		m_editor = std::make_unique<Editor>();
 
 		LOGGER().SetLogLevel(LogLevel::DEBUG);
@@ -30,12 +31,16 @@ namespace TRUFFLE
 
 		while (isRunning && m_window->IsOpen())
 		{
-			m_time->Update();
 			{
+				m_time->Update();
 				Update(m_time->GetDeltaTime());
+			}
+			{
+				m_renderer->BeginFrame();
 				Render();
 				if (isEditorEnable)
 					m_editor->Render();
+				m_renderer->EndFrame();
 			}
 			m_window->OnUpdate();
 		}
@@ -43,6 +48,7 @@ namespace TRUFFLE
 
 	void Application::Init()
 	{
+		m_renderer->Init();
 		m_editor->Init(static_cast<GLFWwindow *>(m_window->GetNativeWindow()));
 		LOG_INFO("Application initialized.");
 	}

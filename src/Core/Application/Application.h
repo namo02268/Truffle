@@ -6,6 +6,7 @@
 #include "Utils/Singleton.h"
 #include "Core/Time/Time.h"
 #include "Editor/Editor.h"
+#include "Renderer/Renderer.h"
 
 namespace TRUFFLE
 {
@@ -13,10 +14,11 @@ namespace TRUFFLE
 	{
 	private:
 		bool isRunning = false;
-		bool isEditorEnable = true;
+		bool isEditorEnable = false;
 
 		std::unique_ptr<OpenGLWindow> m_window;
 		std::unique_ptr<Time> m_time;
+		std::unique_ptr<Renderer> m_renderer;
 		std::unique_ptr<Editor> m_editor;
 
 	protected:
