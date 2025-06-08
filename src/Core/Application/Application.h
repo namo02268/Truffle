@@ -7,6 +7,7 @@
 #include "Core/Time/Time.h"
 #include "Editor/Editor.h"
 #include "Renderer/Renderer.h"
+#include "Scene/Scene.h"
 
 namespace TRUFFLE
 {
@@ -20,6 +21,8 @@ namespace TRUFFLE
 		std::unique_ptr<Time> m_time;
 		std::unique_ptr<Renderer> m_renderer;
 		std::unique_ptr<Editor> m_editor;
+		// TODO: Scene managerに管理させる
+		std::unique_ptr<Scene> m_activeScene;
 
 	protected:
 		Application();
@@ -41,5 +44,8 @@ namespace TRUFFLE
 		float GetTotalTime() const { return m_time->GetTotalTime(); }
 		std::size_t GetFPS() const { return m_time->GetFPS(); }
 		Window *GetWindow() const { return m_window.get(); }
+
+		void SetScene(std::unique_ptr<Scene> scene);
+		Scene* GetActiveScene() const { return m_activeScene.get(); }
 	};
 }

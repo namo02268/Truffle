@@ -5,6 +5,8 @@
 #include <functional>
 #include <typeindex>
 
+// TODO: イベントクラスの実装
+
 namespace TRUFFLE
 {
   class Event
