@@ -58,6 +58,11 @@ set(SRC_OPENGL
     src/OpenGL/OpenGLRenderAPI.cpp
 )
 
+# Scene sources
+set(SRC_SCENE
+    src/Scene/HelloTriangle.cpp
+)
+
 # Main entry point
 set(SRC_MAIN main.cpp)
 
@@ -78,6 +83,7 @@ set(ALL_SOURCES
     ${SRC_EDITOR}
     ${SRC_RENDERER}
     ${SRC_OPENGL}
+    ${SRC_SCENE}
     ${SRC_MAIN}
     ${VENDOR_SOURCES}
 )

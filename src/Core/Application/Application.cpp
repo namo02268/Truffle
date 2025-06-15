@@ -1,5 +1,6 @@
 #include "Core/Application/Application.h"
 #include "Core/Logger/Logger.h"
+#include "Scene/HelloTriangle.h"
 
 namespace TRUFFLE
 {
@@ -50,15 +51,20 @@ namespace TRUFFLE
 	{
 		m_renderer->Init();
 		m_editor->Init(static_cast<GLFWwindow *>(m_window->GetNativeWindow()));
+
+		SetScene(std::make_unique<HelloTriangle>());
+
 		LOG_INFO("Application initialized.");
 	}
 
 	void Application::Update(float timeStep)
 	{
+		if (m_activeScene) m_activeScene->OnUpdate(timeStep);
 	}
 
 	void Application::Render()
 	{
+		if (m_activeScene) m_activeScene->OnRender();		
 	}
 
 	void Application::Shutdown()
@@ -66,5 +72,15 @@ namespace TRUFFLE
 		LOG_INFO("Application shutdown.");
 		m_editor->Shutdown();
 		isRunning = false;
+	}
+
+	void Application::SetScene(std::unique_ptr<Scene> scene)
+	{
+		if (m_activeScene) m_activeScene->OnShutdown();
+
+		m_activeScene = std::move(scene);
+		if (m_activeScene) m_activeScene->OnInit();
+
+		LOG_INFO("Scene changed.");
 	}
 }
