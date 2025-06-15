@@ -4,6 +4,7 @@
 #include <vector>
 #include <functional>
 #include <typeindex>
+#include "Utils/Singleton.h"
 
 namespace TRUFFLE
 {
@@ -13,9 +14,11 @@ namespace TRUFFLE
     virtual ~Event() = default;
   };
 
-  class EventDispatcher
+  class EventDispatcher : public Singleton<EventDispatcher>
   {
   public:
+    friend class Singleton<EventDispatcher>;
+
     template <typename EventType>
     void Subscribe(std::function<void(const EventType &)> listener)
     {
