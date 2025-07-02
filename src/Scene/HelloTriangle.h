@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Scene/Scene.h"
-#include <glad/glad.h>
+#include "OpenGL/OpenGLVertexBuffer.h"
+#include "OpenGL/OpenGLIndexBuffer.h"
+#include "OpenGL/OpenGLVertexArray.h"
 
 namespace TRUFFLE
 {
@@ -14,7 +16,9 @@ namespace TRUFFLE
         void OnShutdown() override;
 
     private:
-        unsigned int VBO, VAO;
+        OpenGLVertexArray VAO;
+        OpenGLVertexBuffer VBO;
+        OpenGLIndexBuffer IBO;
         unsigned int shaderProgram;
     };
 }

@@ -28,7 +28,6 @@ namespace TRUFFLE
 	{
 		Init();
 		isRunning = true;
-		m_time->Init();
 
 		while (isRunning && m_window->IsOpen())
 		{
@@ -49,22 +48,24 @@ namespace TRUFFLE
 
 	void Application::Init()
 	{
+		LOG_INFO("Initializing application...");
+		m_time->Init();
 		m_renderer->Init();
 		m_editor->Init(static_cast<GLFWwindow *>(m_window->GetNativeWindow()));
 
 		SetScene(std::make_unique<HelloTriangle>());
-
-		LOG_INFO("Application initialized.");
 	}
 
 	void Application::Update(float timeStep)
 	{
-		if (m_activeScene) m_activeScene->OnUpdate(timeStep);
+		if (m_activeScene)
+			m_activeScene->OnUpdate(timeStep);
 	}
 
 	void Application::Render()
 	{
-		if (m_activeScene) m_activeScene->OnRender();		
+		if (m_activeScene)
+			m_activeScene->OnRender();
 	}
 
 	void Application::Shutdown()
@@ -76,10 +77,12 @@ namespace TRUFFLE
 
 	void Application::SetScene(std::unique_ptr<Scene> scene)
 	{
-		if (m_activeScene) m_activeScene->OnShutdown();
+		if (m_activeScene)
+			m_activeScene->OnShutdown();
 
 		m_activeScene = std::move(scene);
-		if (m_activeScene) m_activeScene->OnInit();
+		if (m_activeScene)
+			m_activeScene->OnInit();
 
 		LOG_INFO("Scene changed.");
 	}

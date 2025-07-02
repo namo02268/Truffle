@@ -21,7 +21,7 @@ namespace TRUFFLE
 		std::unique_ptr<Time> m_time;
 		std::unique_ptr<Renderer> m_renderer;
 		std::unique_ptr<Editor> m_editor;
-		// TODO: Scene managerに管理させる
+		// TODO: Scene managerに管�?させ�?
 		std::unique_ptr<Scene> m_activeScene;
 
 	protected:
@@ -46,6 +46,6 @@ namespace TRUFFLE
 		Window *GetWindow() const { return m_window.get(); }
 
 		void SetScene(std::unique_ptr<Scene> scene);
-		Scene* GetActiveScene() const { return m_activeScene.get(); }
+		Scene *GetActiveScene() const { return m_activeScene.get(); }
 	};
 }

@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.13)
 set (PROJECT_NAME Truffle)
 project(${PROJECT_NAME})
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 message(STATUS "Project: ${PROJECT_NAME}")
 message(STATUS "C++ Standard: C++${CMAKE_CXX_STANDARD}")
@@ -56,6 +56,9 @@ set(SRC_RENDERER
 set(SRC_OPENGL
     src/OpenGL/OpenGLWindow.cpp
     src/OpenGL/OpenGLRenderAPI.cpp
+    src/OpenGL/OpenGLVertexBuffer.cpp
+    src/OpenGL/OpenGLIndexBuffer.cpp
+    src/OpenGL/OpenGLVertexArray.cpp
 )
 
 # Scene sources
