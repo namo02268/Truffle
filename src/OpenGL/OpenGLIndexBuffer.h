@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <cstddef>
 #include <glad/glad.h>
 #include "Renderer/IndexBuffer.h"
 

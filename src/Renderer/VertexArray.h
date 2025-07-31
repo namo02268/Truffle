@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <typeinfo>
+#include <cstddef>
 
 namespace TRUFFLE
 {
