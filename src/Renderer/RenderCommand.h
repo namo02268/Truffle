@@ -8,19 +8,24 @@ namespace TRUFFLE
   class RenderCommand
   {
   public:
-    static void Init()
+    inline static void Init()
     {
       s_RenderAPI->Init();
     }
 
-    static void SetClearColor(float r, float g, float b, float a)
+    inline static void SetClearColor(float r, float g, float b, float a)
     {
       s_RenderAPI->SetClearColor(r, g, b, a);
     }
 
-    static void Clear()
+    inline static void Clear()
     {
       s_RenderAPI->Clear();
+    }
+
+    inline static void SetViewport(unsigned int x, unsigned int y, unsigned int width, unsigned int height)
+    {
+      s_RenderAPI->SetViewport(x, y, width, height);
     }
 
   private:

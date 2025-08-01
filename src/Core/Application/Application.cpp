@@ -10,7 +10,7 @@ namespace TRUFFLE
 		m_window = std::make_unique<OpenGLWindow>(props);
 		m_time = std::make_unique<Time>([this]()
 																		{ return m_window->GetTime(); });
-		m_renderer = std::make_unique<Renderer>();
+		m_renderer = std::make_unique<Renderer>(props.Width, props.Height);
 		m_editor = std::make_unique<Editor>();
 
 		LOGGER().SetLogLevel(LogLevel::DEBUG);

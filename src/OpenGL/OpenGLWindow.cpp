@@ -1,4 +1,6 @@
 #include "OpenGL/OpenGLWindow.h"
+#include "Event/Event.h"
+#include "Event/WindowResizeEvent.h"
 
 namespace TRUFFLE
 {
@@ -43,6 +45,21 @@ namespace TRUFFLE
 			std::cout << "Failed to initialize GLAD" << std::endl;
 			return;
 		}
+
+		glfwSetWindowSizeCallback(m_windowPtr, [](GLFWwindow *window, int width, int height)
+															{
+        auto* win = reinterpret_cast<OpenGLWindow*>(glfwGetWindowUserPointer(window));
+        if (win)
+        {
+            win->m_data.Width = width;
+            win->m_data.Height = height;
+
+            // イベントを発行
+            WindowResizeEvent event(width, height);
+            EventDispatcher::GetInstance().Dispatch(event);
+        } });
+
+		glfwSetWindowUserPointer(m_windowPtr, this);
 
 		SetVSync(true);
 	}

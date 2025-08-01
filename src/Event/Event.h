@@ -6,7 +6,7 @@
 #include <typeindex>
 #include "Utils/Singleton.h"
 
-// TODO: 繧､繝吶Φ繝医け繝ｩ繧ｹ縺ｮ螳溯｣�
+// TODO: イベントクラスの実装
 
 namespace TRUFFLE
 {
