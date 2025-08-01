@@ -1,8 +1,6 @@
 #include "OpenGL/OpenGLIndexBuffer.h"
 #include "Core/Logger/Logger.h"
 
-#include <glad/glad.h>
-
 namespace TRUFFLE
 {
   // OpenGLIndexBuffer implementation

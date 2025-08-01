@@ -59,6 +59,7 @@ set(SRC_OPENGL
     src/OpenGL/OpenGLVertexBuffer.cpp
     src/OpenGL/OpenGLIndexBuffer.cpp
     src/OpenGL/OpenGLVertexArray.cpp
+    src/OpenGL/OpenGLShader.cpp
 )
 
 # Scene sources

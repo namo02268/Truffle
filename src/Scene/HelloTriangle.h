@@ -4,6 +4,7 @@
 #include "OpenGL/OpenGLVertexBuffer.h"
 #include "OpenGL/OpenGLIndexBuffer.h"
 #include "OpenGL/OpenGLVertexArray.h"
+#include "OpenGL/OpenGLShader.h"
 
 namespace TRUFFLE
 {
@@ -19,6 +20,6 @@ namespace TRUFFLE
         OpenGLVertexArray VAO;
         OpenGLVertexBuffer VBO;
         OpenGLIndexBuffer IBO;
-        unsigned int shaderProgram;
+        OpenGLShader shader;
     };
 }

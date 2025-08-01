@@ -30,44 +30,7 @@ namespace TRUFFLE
                                            "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
                                            "}\n\0";
 
-        // vertex shader
-        unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-        glCompileShader(vertexShader);
-        // check for shader compile errors
-        int success;
-        char infoLog[512];
-        glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-        if (!success)
-        {
-            glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-            LOG_ERROR("ERROR::SHADER::VERTEX::COMPILATION_FAILED");
-        }
-        // fragment shader
-        unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-        glCompileShader(fragmentShader);
-        // check for shader compile errors
-        glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-        if (!success)
-        {
-            glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-            LOG_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED");
-        }
-        // link shaders
-        shaderProgram = glCreateProgram();
-        glAttachShader(shaderProgram, vertexShader);
-        glAttachShader(shaderProgram, fragmentShader);
-        glLinkProgram(shaderProgram);
-        // check for linking errors
-        glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-        if (!success)
-        {
-            glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-            LOG_ERROR("ERROR::SHADER::PROGRAM::LINKING_FAILED");
-        }
-        glDeleteShader(vertexShader);
-        glDeleteShader(fragmentShader);
+        shader.Load(vertexShaderSource, fragmentShaderSource);
     }
 
     void HelloTriangle::OnUpdate(float deltaTime)
@@ -76,13 +39,12 @@ namespace TRUFFLE
 
     void HelloTriangle::OnRender()
     {
-        glUseProgram(shaderProgram);
+        shader.Bind();
         VAO.Bind();
         glDrawArrays(GL_TRIANGLES, 0, 3);
     }
 
     void HelloTriangle::OnShutdown()
     {
-        glDeleteProgram(shaderProgram);
     }
 }
